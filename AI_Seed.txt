@@ -1,0 +1,184 @@
+
+INFORMATIONS-SEED DOKUMENT
+
+Alexander Steinmetz
+AI Solutions Architect & Chief Developer
+
+Umfassende Referenz für KI-Anwendungen
+
+Version 1.0 | Januar 2026
+
+1. Persönliche Daten & Kontakt
+Vollständiger Name: Alexander Steinmetz
+Titel: Diplom-Ingenieur (FH) Nachrichtentechnik
+Berufsbezeichnung: AI Solutions Architect & Chief Developer
+Geschäftsadresse: Schöllerstr. 11, 74321 Bietigheim-Bissingen, Deutschland
+Aktueller Standort: Bis 02.04,2026 Bali, Indonesien (Remote-Arbeit), danach  Geschäftsadresse
+Firma: IT-Beratung, Alexander Steinmetz (selbständiger Freiberufler)
+USt-IdNr.: DE319115489
+Sprachen: Deutsch (fließend), Englisch (sehr gut), Russisch (fließend)
+LinkedIn: https://www.linkedin.com/in/alexander-steinmetz-consulting-ai
+Email: consulting@steinmetz-ai.com
+Website: https://steinmetz-ai.com
+Telegram: @alstit01
+Telefon: +49 17656724014
+
+2. Executive Summary
+Alexander Steinmetz ist ein erfahrener Systems Engineer mit über 20 Jahren Expertise in der Entwicklung sicherheitskritischer Systeme, der im Januar 2026 den Übergang von der Anstellung bei Bosch Engineering GmbH zur hauptberuflichen Selbstständigkeit als AI Solutions Architect vollzieht.
+Seine einzigartige Kombination aus tiefgreifender Engineering-Expertise (ESP-Systeme, ADAS, Bahntechnik) und fundiertem KI-Know-how ermöglicht die Erschließung einer hochspezialisierten Marktnische: AI-gestützte Engineering-Solutions für Unternehmen, die von anderen AI-Beratern ohne entsprechenden technischen Hintergrund nicht bedient werden können.
+
+Kernkompetenzen auf einen Blick
+- 20+ Jahre Safety-Critical Systems Development (ISO 26262, SIL1/2)
+- Miterfinder von 6 registrierten Patenten im Bereich Radartechnik und ADAS
+- Premium-Automotive-Erfahrung: Ferrari, AMG, Porsche, McLaren, Aston Martin
+- MBSE-Expertise mit SysML v2
+- Internationale Marktausrichtung: DACH, Russland und Südostasien
+- Dreisprachige Beratungskompetenz: Deutsch, Englisch, Russisch
+
+3. Beruflicher Werdegang
+3.1 Aktuelle Position (ab Dezember 2025)
+Position: AI Solutions Architect & Chief Developer
+Organisation: Selbstständig
+Leitung eines Expertenteams für maßgeschneiderte AI-Lösungsentwicklung. Architektur und Implementierung individueller KI-Systeme mit Integration in bestehende IT-Landschaften sowie Neuentwicklungen. Chief Developer für Next-Generation AI-MBSE Platform für Safety-Critical Systems (Automotive, Rail, Aerospace).
+3.2 Bosch Engineering GmbH (2007-2025)
+Systementwickler und Systemarchitekt für ADAS-Systeme (Eisenbahn)
+Zeitraum: 2020 - November 2025
+Systemverantwortung für ADAS-Entwicklung in Straßenbahn, Fernverkehr und Rangierbetrieb nach SIL1-Standard
+Systementwicklung nach MBSE-Methodik (Model-Based Systems Engineering)
+Pionierarbeit: Einführung KI-basierter Arbeitsmethoden im Team
+Durchführung komplexer FMEA, HARA und Fehlerfortpflanzungsanalysen
+Feature-Entwicklung Lokalisierung: Präzise Positionierungssysteme für autonome Bahnfahrzeuge
+
+Experte für ADAS-Systeme
+Zeitraum: 2010 - 2020
+Funktionsentwicklung Radartechnik: DSP, Objekttracking und Klassifikation
+Technischer Verantwortlicher für Premium-Automotive-ADAS-Projekte: AMG, Porsche, Ferrari, Mercedes G-Klasse, McLaren, Aston Martin
+Fachteamleitung: Führung eines 6-köpfigen Entwicklerteams nach ASIL B-konformen Prozessen
+Betreuung von 10 studentischen Abschlussarbeiten
+Miterfinder von 6 registrierte Patenten(Rechte bei Robert Bosch GmbH) im Bereich Radarsensorik und Objekterkennung
+
+Funktions- und Software-Entwickler ESP-Systeme
+Zeitraum: 2007 - 2010
+Entwicklung von ESP-Systemen für hochmotorisierte Premium-Fahrzeuge (AMG, Bentley, Ferrari)
+ASIL C-konforme Entwicklung nach ISO 26262 mit vollständiger Traceability
+Implementierung Aspice-konformer Entwicklungsprozesse
+Durchführung von Intensiv-Fahrversuchen auf Testgeländen
+3.3 Ausbildung
+Abschluss: Diplom-Ingenieur (FH) Nachrichtentechnik
+Institution: Hochschule Esslingen (2003 - 2007)
+Schwerpunkte: Signale und Systeme, Digital Signal Processing, Hochfrequenztechnik, Regelungstechnik
+Abschlussarbeit: Akustische Prüftechnik für Elektromotoren (Robert Bosch GmbH)
+
+4. Technische Expertise
+4.1 KI-Lösungsentwicklung
+AI-Architektur, AI-Services (Claude, ChatGPT, Gemini), Prompt Engineering, AI-Agenten-Entwicklung, RAG-Systeme, Knowledge-Base-Design, Workflow-Automatisierung
+4.2 Automatisierung & Integration
+n8n, Notion, Airtable, API-Integration, Systemintegration, Prozessautomatisierung, Dokumentenverarbeitung
+4.3 Software-Entwicklung & Engineering
+C, C++, Python, Matlab/Simulink, LabView, GitHub, GitHub Copilot, Claude Code, Codex, Test-Driven Development (TDD), Agile Methoden
+4.4 MBSE & Systemarchitektur
+SysML v2, Model-Based Systems Engineering, Enterprise Architect, Rhapsody, DNG, UML, Systems Thinking, Proof-of-Concept Development
+4.5 ADAS & Safety-Critical Systems
+Radartechnik, Digital Signal Processing (DSP), Objekttracking, Sensor Fusion, Situation Analysis, Classification, Embedded Systems, Real-Time Operating Systems
+4.6 Funktionale Sicherheit & Qualität
+ISO 26262 (ASIL B/C), SIL1/SIL2 (Railway), Aspice, FMEA, HARA, Requirements Engineering, Safety Case Development
+
+5. Dienstleistungsportfolio
+5.1 AI Consulting (Kerngeschäft)
+Maßgeschneiderte KI-Lösungen, die Unternehmen messbar produktiver machen. Der Ansatz beginnt nicht mit Technologie, sondern mit dem Business-Problem des Kunden.
+Methodischer Ansatz
+5.1.1. Analyse von Business-Prozessen: Identifikation des größten Hebels, Zeit- und Kostenfresser
+5.1.2. Architektur- und Daten Assessment: Untersuchung von Möglichkeiten für optimale Integration in bestehende Landschaft.
+5.1.3. Angebot: Erstellung eines vollständigen Konzepts für Architektur und Lösungen
+5.1.4. Proof of Concept: Funktionierender Prototyp mit echten Daten und Prozessen
+5.1.5. Implementierung: Produktionsreife Lösung mit messbarem ROI
+5.2 Typische Projektarten
+- Intelligente Dokumentenverarbeitung: Automatisierte Extraktion, Klassifikation und Weiterleitung
+- Knowledge-Base-Systeme: Self-Service-Lösungen zur Support-Kostenreduktion
+- Prozessautomatisierung: End-to-End-Workflows mit AI-gestützter Entscheidungslogik bis zur vollständiger Automatisierung.
+- Spezialisierte AI-Agenten(Systeme)
+- Engineering AI-Tools: Speziallösungen für technische Domänen (MBSE, Requirements, Testing)
+- Vertikale hochspezialisierte SaaS/Apps mit hohem Automatisierungsgrad(z.B. Baupilot)
+5.3 Beratungspakete
+Folgende Pakete sollen uner Berücksichtigung von rechtlichen und gesetzlichen Vorschriften in jeweiligen Kundensitzland(meistens Russland, Deutschland, Indonesien) durchgeführt werden. Dafür soll für jedes Land ein separates Richtliniendokument erstellt werden der in dem Entwicklungsprozess als die Leitplanke dienen soll.   
+Paket A: Strategic Discovery Session. (2.000 – 5.000 EUR)
+Für Unternehmen, die verstehen wollen, wo KI den größten Hebel hat. Umfasst Stakeholder-Interviews, IST-Analyse, Quick-Win-Identifikation, Entwurf einer future-ready (AI-first) Architektur der Daten-, Tool und IT-Landschaft, Erstellung von PRDs/UX-Spec/Architektur(Verwendung von BMAD-Method) für Architektur und einzelne Lösungen  und die Roadmap für die Implementierung. 
+Nach dem Initialen Interview und Marktrecherche, soll ein Angebot für den Kunden erstellt werden. Dazu soll ein NDA und Vertrag erstellt werden.   
+Paket B: Transformation Pilot (2.000 - 24.900 EUR)
+Praktische Implementierung, Deployments und Tests von Architektueren und Lösungen aus Strategic Discovery Session, Agent-Ready Web Transformation, KPI-Setup und Team-Training.
+Paket C: Managed Optimization (2.000 - 4.900 EUR/Monat)
+Kontinuierliche Verbesserung nach der Einführung: Operativer Support, quartalsweise Re-Priorisierung, Security & Compliance Hygiene.
+5.4 Preismodell
+Stundensatz Beratung: 80 EUR/Stunde
+Erstgespräch: kostenlos
+Freelancer-Tagessatz: 400-500 EUR
+
+6. Entwicklungsprojekte
+6.1 BauPilot - AI-Powered Construction Management Platform
+Übersicht
+BauPilot ist eine KI-gestützte Construction Management Platform, speziell entwickelt für kleine und mittlere Bauunternehmen (5-50 Mitarbeiter). Primärer Markt: Indonesien, mit fertiger Architektur für DACH und CIS-Märkte.
+Kernprobleme, die gelöst werden
+6.1.1 Liquiditätsmanagement: Geld wird monatelang in Materialien eingefroren, bevor Zahlungen eingehen
+6.1.2 Operative Intransparenz: Keine Echtzeit-Übersicht über tatsächliche Projektausgaben
+6.1.3 Administratives Chaos: Verstreute Daten in Excel, WhatsApp und Papieranträgen
+Schlüsselfunktionen
+Agentic Quality Guardians: KI verhindert aktiv Fehler bevor sie passieren (Budget Bodyguard, Spec Guardian)
+Estimate-Driven Financial Core: Robuste Controlling-Engine mit Echtzeit-P&L-Tracking
+Offline-First Mobile: Volle Funktionalität bei schlechter Konnektivität
+Voice-to-Action: Sprachsteuerung für Feldarbeiter
+DACH Compliance: GAEB Import und DATEV-Kompatibilität
+Preismodell
+Wertbasiertes Abo-Modell: Monatliche Gebühr entspricht 20% des nachweisbaren Einsparpotenzials. Projektgrößenabhängig: 99-2.499 EUR/Monat.
+Status: MVP-Launch geplant für März/April 2026
+Kundeninteressen: 3 konkrete Interessenten bereits vorhanden
+6.2 SPEE - Single Person Engineering Enterprise
+Vision
+SPEE ist eine Plattform, die es einer einzelnen Person ermöglicht, ein vollwertiges, zertifizierbares Ingenieurunternehmen mit derselben methodischen Tiefe, Rückverfolgbarkeit und Qualität zu führen wie große Organisationen.
+Fundamentale Prinzipien
+MBSE-First: SysML v2 als Single Source of Truth
+Auditability by Design: Jede KI-Aktion erklärbar, versioniert, review-pflichtig
+Hybrid & Sovereign: Cloud und On-Prem-Betrieb möglich
+Zielbranchen
+Automotive (ISO 26262 / ASIL)
+Rail (EN 50128 / EN 50126)
+Aerospace / UAV (DO-178C, DO-254)
+Industrieautomation (IEC 61508, SIL 3)
+Status: In der Entwicklung
+
+7. Geschäftsmodell & Organisation
+7.1 Unternehmensstruktur
+Alexander Steinmetz fungiert als primärer Consultant und Kundeninterface. Die Implementierung erfolgt durch ein Netzwerk von Freelancern und selbstständigen Fachexperten (Ingenieure, MBAs) für projektbasierte Zusammenarbeit. Unterstützt durch hoch automatisierten AI-Agenten.
+7.2 Earned Shares Revenue Model
+Für größere Projekte kommt ein innovatives Vergütungsmodell zum Einsatz:
+50% Business Owner (Alexander Steinmetz)
+5% jeweils für fixe Rollen
+40% Variable Epic Pool basierend auf Story Points
+7.3 Kapazitätserweiterung
+Einstellung des ersten Mitarbeiters (Sohn, derzeit in AI-SaaS/SW-Engineering Ausbildung) zunächst als Minijob
+Aufbau eines Kooperationsnetzwerks mit selbstständigen Fachexperten
+AI-gestützte Entwicklungsumgebung (n8n, AI-Agenten) für maximale Effizienz
+7.4 Zielmärkte
+DACH: Deutschland, Österreich, Schweiz (Hauptmarkt)
+Südostasien: Indonesien, mit Fokus auf Bauwesen
+CIS: Russland und umliegende Länder (russischsprachig)
+
+8. Alleinstellungsmerkmale (USP)
+8.1 Einzigartige Expertise-Kombination: 20+ Jahre Safety-Critical Engineering + fundiertes AI-Know-how
+8.2 Premium-Automotive-Erfahrung: Direkte Arbeit mit Ferrari, AMG, Porsche, McLaren, Aston Martin
+8.3 Patentierte Innovation: Miterfinder von 6 registrierten Patenten im Bereich Radartechnik und ADAS
+8.4 Dreisprachige Marktabdeckung: Deutsch, Englisch, Russisch ermöglichen internationale Kundenbasis
+8.5 MBSE-Tiefe: SysML v2 Expertise für methodisch fundierte Lösungen
+8.6 Praxisorientierter Ansatz: Keine Theorie, sondern bewährte Implementierungen
+8.7 Partnerschaftliches Modell: Entwicklung mit Fokus auf den Kundenbedarf(Painpoints, Flaschenhälse, zukunftssicher)
+
+9. Verwendungshinweise für KI-Systeme
+Dieses Dokument dient als Informations-Seed für verschiedene KI-Anwendungen. Es enthält verifizierte Fakten und kann als Grundlage verwendet werden für:
+Erstellung von Marketing-Materialien
+Generierung von Präsentationen
+Beantwortung von Kundenanfragen
+Erstellung von Angeboten und Proposals
+Social-Media-Content
+Website-Texte und Landing Pages
+Personalisierte Kommunikation
+
+Wichtig: Alle Informationen in diesem Dokument sind verifiziert und können als Fakten behandelt werden. Bei Unsicherheiten bitte Rückfrage stellen.

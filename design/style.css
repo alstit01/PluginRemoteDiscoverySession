@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+:root {
+    --bg-color: #1E1E24;
+    --text-primary: #FFFFFF;
+    --text-secondary: #D1D5DB;
+    --accent: #E11D48;
+    /* Vibrant Red */
+    --accent-blue: #3B82F6;
+    /* Tech Blue */
+    --font-heading: 'Roboto', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+@page {
+    size: 297mm 210mm;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-print-color-adjust: exact;
+}
+
+.slide {
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+    position: relative;
+    page-break-after: always;
+    background: var(--bg-color);
+    box-sizing: border-box;
+}
+
+/* Background Elements for "Stylish" 3D feel */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: -50mm;
+    right: -50mm;
+    width: 200mm;
+    height: 200mm;
+    background: radial-gradient(circle, rgba(225, 29, 72, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.slide::after {
+    content: '';
+    position: absolute;
+    bottom: -50mm;
+    left: -50mm;
+    width: 200mm;
+    height: 200mm;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+/* Header */
+.slide-header {
+    position: absolute;
+    top: 15mm;
+    left: 20mm;
+    right: 20mm;
+    height: 20mm;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--accent);
+    z-index: 100;
+}
+
+.slide-header h2 {
+    margin: 0;
+    font-size: 22pt;
+    /* Slightly smaller for long titles */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+/* Content */
+.content-area {
+    position: absolute;
+    top: 45mm;
+    bottom: 20mm;
+    left: 20mm;
+    right: 20mm;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area h3 {
+    color: var(--accent-blue);
+    font-size: 18pt;
+    margin-bottom: 4mm;
+    margin-top: 4mm;
+}
+
+.content-area p {
+    font-size: 16pt;
+    line-height: 1.5;
+    margin-bottom: 6mm;
+    color: var(--text-primary);
+}
+
+.content-area strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.content-area ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-area li {
+    font-size: 16pt;
+    line-height: 1.4;
+    margin-bottom: 8mm;
+    padding-left: 6mm;
+    position: relative;
+}
+
+.content-area ul li::before {
+    content: '►';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-size: 10pt;
+    top: 3px;
+}
+
+#slide3 li::before {
+    content: none;
+}
+
+#slide3 li {
+    padding-left: 0;
+}
+
+#slide17 li::before {
+    content: none;
+}
+
+#slide17 li {
+    padding-left: 0;
+}
+
+.content-area blockquote {
+    border-left: 4px solid var(--accent-blue);
+    margin: 8mm 0;
+    padding-left: 8mm;
+    font-style: italic;
+    color: var(--text-primary);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 5mm;
+    border-radius: 0 8px 8px 0;
+}
+
+.content-area blockquote.blockquote-red {
+    border-left-color: var(--accent);
+    background: rgba(225, 29, 72, 0.1);
+}
+
+/* Footer */
+.slide-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 20mm;
+    right: 20mm;
+    text-align: right;
+    font-size: 12pt;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2mm;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-slide .slide-footer {
+    display: none;
+}
+
+#slide3 .content-area li {
+    margin-bottom: 12mm;
+}
+
+#slide4 blockquote {
+    font-size: 14pt;
+}
+
+/* Removed specific smaller h3 for these slides to match global size */
+
+/* Layouts */
+.layout-hero .content-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+}
+
+.hero-visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mask-image: linear-gradient(to right, transparent, black 10%);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%);
+}
+
+.layout-split .content-area {
+    display: flex;
+    flex-direction: row;
+    gap: 10mm;
+    height: 100%;
+    /* Important for alignment */
+}
+
+.layout-split .text-col {
+    width: 65%;
+}
+
+.layout-split .visual-col {
+    width: 35%;
+    align-self: flex-start;
+    height: 130mm;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 2mm;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.layout-split .visual-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5mm;
+}
+
+#slide15 table th,
+#slide15 table td {
+    font-size: 16pt;
+}
+
+th,
+td {
+    padding: 3mm;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+    font-size: 14pt;
+    color: var(--text-primary);
+}
+
+th {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+/* Specific Adjustments */
+.title-slide .slide-header {
+    border: none;
+    top: 20mm;
+    left: 20mm;
+    right: 30mm;
+    width: 48%;
+    height: auto;
+    display: block;
+}
+
+.title-slide .slide-header h1 {
+    font-size: 36pt;
+    line-height: 1.1;
+    color: var(--accent);
+    margin-bottom: 5mm;
+    font-weight: 900;
+}
+
+.title-slide .speaker-info {
+    margin-top: 5mm;
+    font-size: 20pt;
+    color: var(--text-primary);
+}
+
+.title-slide .slide-header h2 {
+    font-size: 16pt;
+    color: var(--accent-blue);
+    text-transform: none;
+    margin-bottom: 2mm;
+}
+
+/* Implementation Highlights */
+.impl-tag {
+    margin-top: 8mm;
+    font-size: 16pt;
+    color: var(--text-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 3mm;
+}
+
+.impl-tag strong {
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.text-col p strong {
+    color: var(--accent-blue);
+}
+
+
+/* Speaker Slide Image */
+.speaker-photo {
+    width: 40mm;
+    height: 40mm;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    overflow: hidden;
+    margin-bottom: 5mm;
+}
+
+.speaker-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Slide 16 Contact Section */
+.contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(225, 29, 72, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 8mm;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.contact-section .contact-details {
+    flex: 1;
+    text-align: left;
+}
+
+.contact-section .qr-box {
+    width: 35mm;
+    height: 35mm;
+    background: white;
+    padding: 2mm;
+    border-radius: 4px;
+    margin-left: 10mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-section .qr-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#slide18 .content-area h3 {
+    color: var(--text-primary);
+}
+
+/* Specific Adjustments for Steps Slides (6, 8, 10, 12) to make images/frames wider */
+#slide6 .text-col,
+#slide8 .text-col,
+#slide10 .text-col,
+#slide12 .text-col {
+    width: 117mm;
+}
+
+#slide6 .visual-col,
+#slide8 .visual-col,
+#slide10 .visual-col,
+#slide12 .visual-col {
+    width: 130mm;
+}
