@@ -13,6 +13,7 @@ Tools/Methoden für Remote Discovery Session:
 - Erstellung von Angeboten für Umsetzung von vorgeschlagenen Lösungen 
 - Erstellung von Verträgen und NDAs
 - Projektverfolgung und Management soll über eine einfache Web-Applikation erfolgen, Projektinformationen sollen auf Github in separaten privaten Repositories abgelegt werden. 
+- Nach Bedarf soll ein Agenten Memory System (GCC) verwendet werden. Nutze dafür gleiche kundenprojekt-Repo. 
 - Erstellung und publishing von statischen HTML (mit CSS und JS) Seiten für Präsentationen, Berichte, Angebote, etc. in Corporate Design. 
 - Erstellung von rechtlichen und regulatorischen Richtlinien für jeweilige Märkte, als Leitplanke für Verträge, NDAs und für die Spezifizierung der vorgeschlagenen Lösungen.
 
@@ -42,3 +43,4 @@ Composio MCP (für viele Kundenspezifische MCP-Server): https://docs.composio.de
 Info für Claude Plugin: https://platform.claude.com/docs/en/agent-sdk/plugins#plugin-structure-reference
 Claude Plugin für die Entwicklung von Plugins: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev
 Beispiel für Claude Plugin: https://github.com/ComposioHQ/awesome-claude-plugins
+Agenten memory system: https://github.com/alstit01/GCC.git
