@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steinmetz AI | Neural Network Showcase</title>
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+
+<body>
+
+    <!-- Dynamic Aurora Mesh Background -->
+    <div class="aurora-bg">
+        <!-- These blobs use the subtle red/blue/purple gradients requested -->
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
+
+    <!-- White / Antique-White Neural Network Canvas -->
+    <canvas id="neural-canvas"></canvas>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <main class="hero">
+            <div class="reveal">
+                <span class="badge"><i class="uil uil-brain"></i> Neural Core V3.0</span>
+                <h1>
+                    <span class="text-gradient">Agentic Systems.</span><br>
+                    <span class="text-gradient-antique">Cognitive Architecture.</span>
+                </h1>
+                <p>A sophisticated blend of dynamic gradient mesh backgrounds and reactive neural topologies. Designed
+                    in pure, brilliant white and an antique-white aesthetic to evoke clarity and intelligence.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <a href="#" class="btn btn-primary"><i class="uil uil-play"></i> Run Sequence</a>
+                    <a href="#" class="btn btn-secondary"><i class="uil uil-document-layout-left"></i> Architecture
+                        Docs</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Technical Modules -->
+        <section class="grid">
+
+            <div class="card glass reveal" style="transition-delay: 100ms;">
+                <div class="badge mb" style="margin-bottom:1rem;"><i class="uil uil-layer-group"></i> Dynamic Gradient
+                </div>
+                <i class="uil uil-palette" style="font-size: 2.5rem; color: #FAEBD7;"></i>
+                <h3 class="text-gradient-antique">Mesh Aurora</h3>
+                <p>The dark but rich gradient mesh is back. Flowing seamlessly in the background to provide depth
+                    without distracting from the UI.</p>
+            </div>
+
+            <div class="card glass reveal" style="transition-delay: 200ms;">
+                <div class="badge mb" style="margin-bottom:1rem;"><i class="uil uil-vector-square"></i> Canvas Engine
+                </div>
+                <i class="uil uil-share-alt" style="font-size: 2.5rem; color: #FFFFFF;"></i>
+                <h3 class="text-gradient">Neural Networks</h3>
+                <p>The particles form a biological, neural network structure. Edges are drawn when nodes converge,
+                    creating a living digital tapestry.</p>
+            </div>
+
+            <div class="card glass reveal" style="transition-delay: 300ms;">
+                <div class="badge" style="margin-bottom:1rem;"><i class="uil uil-mouse-alt"></i> Intelligence</div>
+                <i class="uil uil-mouse" style="font-size: 2.5rem; color: #FAEBD7;"></i>
+                <h3 class="text-gradient-antique">Interactive Data</h3>
+                <p>Move your cursor. The network senses the coordinates and connects to your point of presence, making
+                    the architecture tangibly responsive.</p>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer
+            style="margin: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;"
+            class="reveal">
+            <p style="color: var(--base-text-muted); font-size: 0.9rem; font-family: var(--font-heading);"><i
+                    class="uil uil-server"></i> Steinmetz AI Solutions &copy; 2026. Neural Architecture.</p>
+        </footer>
+    </div>
+
+    <!-- Neural Network Script -->
+    <script>
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Neural Network Canvas Engine
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, nodes;
+        let mouse = { x: null, y: null, radius: 180 };
+
+        // Color palettes from White to Antique White
+        const nodeColors = [
+            '255, 255, 255',   // Pure White
+            '250, 235, 215',   // Antique White
+            '240, 248, 255',   // Alice Blue (very subtle white-blue)
+            '253, 245, 230'    // Old Lace
+        ];
+
+        class NeuralNode {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.baseSize = Math.random() * 2 + 0.5;
+                this.size = this.baseSize;
+                this.rgb = nodeColors[Math.floor(Math.random() * nodeColors.length)];
+
+                // Opacity varies slightly for depth
+                this.opacity = Math.random() * 0.5 + 0.3;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges smoothly
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse interactivity (slight repulsion + slight attraction)
+                if (mouse.x != null && mouse.y != null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius) {
+                        // Float slightly slower near cursor like a synapse
+                        this.size = this.baseSize * 1.8;
+                    } else {
+                        this.size = this.baseSize;
+                    }
+                } else {
+                    this.size = this.baseSize;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.rgb}, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            nodes = [];
+
+            // Number of nodes adapts to screen size
+            const nodeCount = Math.floor((width * height) / 8500);
+
+            for (let i = 0; i < nodeCount; i++) {
+                nodes.push(new NeuralNode());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw & Update Nodes
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].update();
+                nodes[i].draw();
+
+                // Compute Neural Connections
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    // Threshold for drawing a connection
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        // Connection opacity diminishes with distance, creating subtle mesh
+                        const opacity = 1 - (distance / 120);
+                        // Blend node colors roughly for the line (use white as base)
+                        ctx.strokeStyle = `rgba(250, 235, 215, ${opacity * 0.25})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Connect to Mouse if close enough
+                if (mouse.x != null && mouse.y != null) {
+                    const dx = mouse.x - nodes[i].x;
+                    const dy = mouse.y - nodes[i].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius) {
+                        ctx.beginPath();
+                        const opacity = 1 - (distance / mouse.radius);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.4})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // Event Listeners
+        window.addEventListener('resize', init);
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        // Remove mouse coords when leaving window
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        // Initialize and Run
+        init();
+        animate();
+    </script>
+</body>
+
+</html>

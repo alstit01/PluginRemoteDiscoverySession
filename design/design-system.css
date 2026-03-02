@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+/**
+ * STEINMETZ AI - CORPORATE DESIGN SYSTEM (V3.0)
+ * --------------------------------------------
+ * Neural Network Aesthetic with Premium Dynamic Gradient.
+ */
+
+:root {
+    /* --- COLOR TOKENS --- */
+    --base-bg: #030305;
+    /* Deepest Dark */
+    --base-text: #F9FAFB;
+    /* Crisp White */
+    --base-text-muted: #D1D5DB;
+    /* Cool Grey */
+
+    /* --- ACCENTS --- */
+    --accent-primary: #E11D48;
+    /* Precision Crimson */
+    --accent-secondary: #3186FF;
+    /* Signal Blue */
+
+    /* --- GLASSMORPHISM --- */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-highlight: rgba(255, 255, 255, 0.15);
+    --glass-blur: blur(24px);
+
+    /* --- TYPOGRAPHY --- */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* --- SPACING & RADIUS --- */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-pill: 9999px;
+}
+
+/* --- BASE STYLES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--base-bg);
+    color: var(--base-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* --- DYNAMIC AURORA MESH BACKGROUND --- */
+.aurora-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
+    background: var(--base-bg);
+    overflow: hidden;
+}
+
+.aurora-blob {
+    position: absolute;
+    filter: blur(100px);
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: floatBlob 25s infinite alternate ease-in-out;
+}
+
+/* Using the original red and blue colors in a soft mix to create the gradient he liked */
+.blob-1 {
+    background: rgba(225, 29, 72, 0.6);
+    /* Soft Crimson */
+    width: 45vw;
+    height: 45vh;
+    top: -10%;
+    left: -10%;
+}
+
+.blob-2 {
+    background: rgba(49, 134, 255, 0.5);
+    /* Signal Blue */
+    width: 50vw;
+    height: 50vh;
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -7s;
+}
+
+.blob-3 {
+    background: rgba(100, 50, 200, 0.3);
+    /* Subtle tie-in for depth */
+    width: 40vw;
+    height: 40vh;
+    top: 40%;
+    left: 30%;
+    animation-delay: -14s;
+}
+
+@keyframes floatBlob {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(15vw, 10vh) scale(1.1) rotate(20deg);
+    }
+}
+
+/* --- NEURAL PARTICLE CANVAS --- */
+#neural-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    pointer-events: none;
+    /* Let clicks pass through to content */
+}
+
+/* --- UTILITIES --- */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border-highlight), transparent);
+}
+
+/* Beautiful White/Silver Typography Gradients */
+.text-gradient {
+    background: linear-gradient(180deg, #FFFFFF 0%, #D1D5DB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-antique {
+    /* Antique White to Silver */
+    background: linear-gradient(135deg, #FAEBD7 0%, #E5E7EB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-accent {
+    background: linear-gradient(135deg, #FF4B6E 0%, var(--accent-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #FAEBD7;
+    /* Antique white badge text */
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+.btn-primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #0A0A0C;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover {
+    background: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #FAEBD7;
+    border: 1px solid rgba(250, 235, 215, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(250, 235, 215, 0.15);
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    margin: 1.5rem 0;
+    max-width: 900px;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--base-text-muted);
+    max-width: 650px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 6rem;
+    z-index: 10;
+    position: relative;
+}
+
+.card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(250, 235, 215, 0.3);
+    /* Antique white glow on hover */
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    color: #FFFFFF;
+}
+
+.card p {
+    color: var(--base-text-muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+}

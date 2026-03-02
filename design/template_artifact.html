@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Artifact - Steinmetz AI</title>
+    <link rel="stylesheet" href="design-system.css">
+    <style>
+        /* Artifact specific layouts */
+        body {
+            /* Ensures scrollability for long artifacts */
+            overflow-y: auto;
+        }
+
+        .artifact-header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(3, 3, 5, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .artifact-header .title-group h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .artifact-header .title-group p {
+            color: var(--base-text-muted);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .artifact-content {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Technical Typography */
+        pre {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            color: #E5E7EB;
+            font-family: monospace;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+            color: #FAEBD7;
+            /* Antique highlight */
+        }
+
+        /* Artifact Cards */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .spec-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--glass-blur);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: border-color 0.3s;
+        }
+
+        .spec-card.highlight {
+            border-color: rgba(49, 134, 255, 0.4);
+            /* Signal Blue */
+        }
+
+        .spec-card.warning {
+            border-color: rgba(225, 29, 72, 0.4);
+            /* Crimson */
+        }
+
+        .spec-card h3 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: rgba(49, 134, 255, 0.15);
+            color: #80BFFF;
+            border: 1px solid rgba(49, 134, 255, 0.3);
+        }
+
+        .status-critical {
+            background: rgba(225, 29, 72, 0.15);
+            color: #FF809F;
+            border: 1px solid rgba(225, 29, 72, 0.3);
+        }
+
+        .status-stable {
+            background: rgba(52, 211, 153, 0.15);
+            color: #6EE7B7;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- V3 Dynamic Backgrounds -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Artifact Sticky Header -->
+    <header class="artifact-header">
+        <div class="title-group">
+            <h1 class="text-gradient">System Architecture Specification</h1>
+            <p>Project: Remote Discovery Core | Version 1.0 (2026-03-02)</p>
+        </div>
+        <div>
+            <span class="status-badge status-stable">APPROVED</span>
+            <a href="#" class="btn btn-secondary"
+                style="padding: 8px 16px; font-size: 0.9rem; margin-left: 1rem;">Export PDF</a>
+        </div>
+    </header>
+
+    <!-- Main Content Flow -->
+    <main class="artifact-content">
+        <div class="glass" style="margin-bottom: 3rem;">
+            <h2 class="text-gradient-accent">1. Executive Summary</h2>
+            <p>This artifact defines the AI-first integration layer required to bridge legacy systems (Bitrix24, SAP)
+                with modern LLM workflows. The architecture relies heavily on dynamically provisioned <strong>Model
+                    Context Protocol (MCP)</strong> servers as a bridge.</p>
+        </div>
+
+        <h2>2. Component Topology</h2>
+        <div class="spec-grid">
+            <div class="spec-card highlight">
+                <h3>DACH Market Integrations</h3>
+                <p>Native configuration using Open-Source standard MCP definitions to ensure maximum compliance and API
+                    depth.</p>
+                <ul>
+                    <li><strong>Salesforce:</strong> <code>@mcp-server-salesforce</code></li>
+                    <li><strong>HubSpot:</strong> <code>@shinzo-labs/hubspot-mcp</code></li>
+                </ul>
+                <div style="margin-top: 1rem;">
+                    <span class="status-badge status-active">PRODUCTION READY</span>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <h3>Generic Integrations (Composio)</h3>
+                <p>Fallback for wide-net systems like Trello or regional platforms without native MCP servers.</p>
+                <ul>
+                    <li>Action execution via universal REST proxy</li>
+                    <li>Configuration driven auth management</li>
+                </ul>
+            </div>
+
+            <div class="spec-card warning">
+                <h3>CIS / RU Market Legacy</h3>
+                <p>Connecting to isolated instances (1C, Bitrix24 On-Prem) requires specific tunnel configurations.</p>
+                <ul>
+                    <li>Custom XML-RPC wrappers required</li>
+                    <li>Security audit pending for reverse-proxies</li>
+                </ul>
+                <div style="margin-top: 1rem;">
+                    <span class="status-badge status-critical">REQUIRES CUSTOM AGENT</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass" style="margin-top: 3rem;">
+            <h2>3. Configuration Blueprint</h2>
+            <p>Standardized JSON configuration deployed via the Plugin Architecture to initialize the session context.
+            </p>
+            <pre><code>{
+  "mcpServers": {
+    "salesforce": {
+      "command": "npx",
+      "args": ["-y", "@mcp-server/salesforce"],
+      "env": {
+        "SF_INSTANCE_URL": "${SF_ENV_URL}",
+        "SF_API_VERSION": "60.0"
+      }
+    }
+  }
+}</code></pre>
+        </div>
+
+    </main>
+
+    <footer
+        style="text-align: center; padding: 2rem; color: var(--base-text-muted); font-size: 0.9rem; border-top: 1px solid var(--glass-border);">
+        &copy; 2026 IT-Beratung Alexander Steinmetz. All architectural intellectual property is strictly confidential.
+    </footer>
+
+    <!-- Neural Canvas Script -->
+    <script>
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+
+        const config = {
+            particleCount: 100, // Balanced for reading text
+            particleBaseRadius: 1.5,
+            particleSpeed: 0.3,
+            linkDistance: 150,
+            linkColor: '250, 235, 215',
+            particleColor1: '#FFFFFF',
+            particleColor2: '#FAEBD7',
+            mouseInteractiveDistance: 250,
+            mouseRepelStrength: 0.03
+        };
+
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * config.particleSpeed;
+                this.vy = (Math.random() - 0.5) * config.particleSpeed;
+                this.radius = Math.random() * config.particleBaseRadius + 0.5;
+                this.color = Math.random() > 0.5 ? config.particleColor1 : config.particleColor2;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < config.mouseInteractiveDistance) {
+                        let force = (config.mouseInteractiveDistance - dist) / config.mouseInteractiveDistance;
+                        this.vx -= (dx / dist) * force * config.mouseRepelStrength;
+                        this.vy -= (dy / dist) * force * config.mouseRepelStrength;
+                    }
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < config.particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < config.linkDistance) {
+                        let opacity = 1 - (dist / config.linkDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(${config.linkColor}, ${opacity * 0.4})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        resize();
+        animate();
+    </script>
+</body>
+
+</html>

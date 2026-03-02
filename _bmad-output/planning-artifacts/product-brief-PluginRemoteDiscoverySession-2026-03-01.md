@@ -61,6 +61,7 @@ Die Lösung ist die Automatisierung der Beratungsdienstleistung selbst durch das
 **Die KMU-Klienten (DACH, Russland, Indonesien)**
 - **C-Level Entscheider (Geschäftsführer/COO):** Fokus auf strategischen ROI. Sie sind die *Empfänger* der erstellten Stakeholder-Berichte. Ihr Erlebnis ist geprägt von der unerwarteten Aktualität der Lösung und dem beeindruckenden Format der Delivery (interaktive HTML-Dashboards im Corporate Design).
 - **IT-Administratoren des Kunden:** Zuständig für Berechtigungen. Profitieren von der Klarheit der Anforderungen, da sie lediglich dedizierte Parallelinstanzen/Sandboxes für den Lese-Zugriff der MCP-Server einrichten müssen, was ihre Sicherheitsbedenken sofort beschwichtigt.
+- **ICP (Ergänzung):** B2B-Unternehmen mit ca. **5–100 Mitarbeitenden**.
 
 ### User Journey (The 5-Phase Consulting Machine)
 
@@ -82,13 +83,14 @@ Die Journey des primären Nutzers wird durch präzise Prozessphasen mit klar def
 4. **Phase 4: Remote Discovery Session (Der Kernprozess)**
    - *Aktion:* Durchführung der Session basierend auf BMAD-Methodik.
    - *Sub-Aktion 1 (Qualitativ):* Remote Interviews mit Stakeholdern. Auswertung von unstrukturierten Daten (Fragebögen, Prozessdokumente, CRM-Exporte, Transkripte) zur Identifikation von "Low-Hanging Fruits".
-   - *Sub-Aktion 2 (Quantitativ/System):* Lesende Analyse von digitalen Informationen und IT-Systemen (CRM, ERP) via angeschlossenen MCP-Servern auf speziellen Kunden-Parallelinstanzen.
+   - *Sub-Aktion 2 (Quantitativ/System):* Lesende Analyse von digitalen IT-Systemen (CRM, ERP, Projektmanagement). Hierbei orchestriert das Plugin je nach Zielmarkt die passenden Konnektoren (z.B. DACH: Salesforce/HubSpot via dedizierten nativen MCP-Servern; RU/ID: 1C/Bitrix24/Lark via Composio oder generischen REST-Proxies) auf speziellen Kunden-Parallelinstanzen.
    - *Leitmotiv:* Jeder identifizierte Quick Win wird als Baustein in die große Vision einer komplett datenzentrischen Architektur zur Prozess-Automatisierung eingeordnet. Begleitet von ständiger Echtzeit-Forschung zum aktuellsten Stand der KI-Technologie (max. 1-2 Monate alt).
 
 5. **Phase 5: Delivery & Follow-Up (Architektur & Folgetikett)**
-   - *Aktion:* Synthese aller Discovery-Erkenntnisse in finale, geschäftsführende Dokumente zur Umsetzung.
+   - *Aktion:* Synthese aller Discovery-Erkenntnisse in finale, geschäftsführende Dokumente zur Umsetzung. Die Entwicklung von PRDs und Architekturen bildet hiermit den strategischen Abschluss der Discovery Session.
    - *Artefakte:* **Architektur- und Lösungsspezifikationen** (inkl. Web-Applikationsplänen). **Implementierungs-Angebot** für die vorgeschlagenen Lösungen.
    - *Delivery-Format:* Statische, lokal gerenderte HTML-Seiten (mit CSS/JS) für Präsentationen und Berichte im Corporate Design des Kunden.
+   - *Architektur-Präzisierung:* Als Basis für die Architektur-Spec dient ein universeller Tech-Stack (dokumentiert in `GitHub_Tech-Stack_KMU.md`), dessen Kernkomponenten als ausgewählt gelten. Dieser Stack ist jedoch nicht in Stein gemeißelt und bedarf weiterer Optimierung (z.B. fehlen dort noch auf GitHub vorhandene Claude Plugins und Claude Skill-Sets; zudem ist das Thema Lizensierung noch nicht final geklärt). Für die Erstellung der Architektur-Spec bedeutet dies: Der Fokus liegt weniger auf der generellen Auswahl des Tech-Stacks, sondern vielmehr auf der gezielten Suche und Erstellung von Plugins für den spezifischen Kunden-Use-Case sowie dem richtigen Zusammenspiel der einzelnen Applikationen.
 
 ---
 
@@ -105,15 +107,16 @@ Die Journey des primären Nutzers wird durch präzise Prozessphasen mit klar def
 - **Wettbewerbsvorteil durch Tempo & Vollständigkeit:** Lösungsarchitekturen betrachten nicht nur klassische Systeme (CRM, ERP), sondern auditieren explizit auch die Kundenwebseite in Hinblick auf ihre "KI-Sichtbarkeit" (z.B. für LLM-Agenten, Perplexity etc., basierend auf `20260204_Повышение видимости для ИИ.md`). Das positioniert das Consulting unantastbar.
 
 ### Key Performance Indicators (KPIs)
-- **Margen-Ziel (ROI):** Die erstellten Angebote müssen basierend auf dem hochautomatisierten Prozess (EDD/TDD für Delivery) und dem tatsächlichen Realisierungsaufwand konstant eine **Bruttomarge von 300 %** bezogen auf den investierten Stundenaufwand sichern.
+- **Margen-Ziel (ROI):** Die erstellten Angebote müssen basierend auf dem hochautomatisierten Prozess (EDD/TDD für Delivery) und dem tatsächlichen Realisierungsaufwand konstant eine **Bruttomarge von 200 %** bezogen auf den investierten Stundenaufwand sichern (Beispiel: 10h × $80 = $800 Kostenbasis → Angebot $2.400).
 - **Corporate Consistency:** 100 % der freigegebenen Lösungspräsentationen entsprechen dem zentral festgelegten Corporate Webdesign (`style.css`), was den wahrgenommenen Service-Wert im KMU-Sektor drastisch steigert.
 
 ## MVP Scope
 
 ### Core Features
-- **Discovery & Architektur-Spezifikation (Das Kernprodukt):** Vollständige Unterstützung der 5-Phasen-Consulting-Journey. Der Hauptfokus liegt auf der Automatisierung der Dokumentengenerierung für Akquise, rechtliches Setup (NDA, Verträge) und Lösungsarchitektur-Spezifikationen.
+- **Discovery & Architektur-Spezifikation (Das Kernprodukt):** Vollständige Unterstützung der 5-Phasen-Consulting-Journey. Der Hauptfokus liegt auf der Automatisierung der Dokumentengenerierung für Akquise, rechtliches Setup (NDA, Verträge) und Lösungsarchitektur-Spezifikationen (inkl. PRDs). Da ein universeller Tech-Stack als Basis vorausgesetzt wird, fokussiert sich das Plugin bei der Architekturerstellung primär auf die Recherche und Erstellung kontextspezifischer Plugins (Claude Plugins, Skills) sowie die Orchestrierung des Zusammenspiels der Applikationen für den individuellen Kunden-Use-Case.
 - **AI-Sichtbarkeits-Audit (Website):** In Phase 1 ist die vollautomatische, strukturelle Überprüfung der Kundenwebsite auf "AI-Readiness" (Lesbarkeit für RAGs & Web-Crawler wie Perplexity) integraler Bestandteil des MVP.
-- **Dynamisches MCP-System-Mapping (Lesend):** Das Plugin etabliert automatisiert und zur Laufzeit der Session die passenden Verbindungen via Composio MCP zu den spezifischen Kunden-Systemen (CRM, ERP). Dies geschieht situativ. Die Fähigkeit zur **selbstständigen Skill-Sondierung und -Integration** via `awesome-claude-skills` (GitHub) für nicht nativ in Composio vorhandene Tools ist als Fallback-Strategie fester Bestandteil des MVP.
+- **Multi-Markt Connector-Set (Read-Only, v1):** Russland: Bitrix24, kommo/amoCRM, 1C. Indonesien: Odoo, Mekari Qontak. Deutschland: über Composio-Verbindungen (konfigurationsgetrieben; Zielsysteme v1: HubSpot, Salesforce, Microsoft 365, Google Workspace).
+- **Zielmarkt-spezifische MCP-Integrationen (Lesend):** Das Plugin etabliert automatisiert und zur Laufzeit der Session die passenden Verbindungen. Für dominante KMU-Systeme im DACH-Markt kommen dedizierte, native Open-Source MCP-Server zum Einsatz (z.B. **Salesforce MCP** via `tsmztech/mcp-server-salesforce` oder **HubSpot MCP** via `shinzo-labs/hubspot-mcp`), um eine maximale Informationstiefe (wie SOQL Queries oder native Object Metadata) zu gewährleisten. Für breitere Tool-Landschaften (Asana, Trello oder Odoo) fungiert **Composio MCP** als universelle Bridge. Die Fähigkeit zur **selbstständigen Skill-Sondierung und -Integration** via `awesome-claude-skills` (GitHub) – oder über generische REST API MCP Server (z.B. für SAP B1 oder Tools wie Bitrix24/1C) – ist als dynamische Fallback-Strategie fester Bestandteil des MVP.
 - **Corporate Delivery Engine:** Generierung von Repräsentationsmaterialien (z. B. Architektur-Dashboards) in Form von gebrandeten statischen HTML/CSS-Seiten basierend auf dem definierten `design\style.css`.
 - **Projekt-Memory via GCC:** Kontext- und Wissenserhalt für das jeweilige Kundenprojekt im Private Repository.
 

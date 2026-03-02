@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Template - Steinmetz AI</title>
+    <link rel="stylesheet" href="design-system.css">
+    <style>
+        /* Document Specific Styles overriding base for A4 */
+        body {
+            /* Desktop View: Dark Aurora Background */
+            background-color: var(--base-bg);
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* The A4 "Paper" Container */
+        .document-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #FFFFFF;
+            color: #1A1A1A;
+            /* High contrast for reading */
+            font-family: var(--font-body);
+            padding: 25mm 20mm 30mm 20mm;
+            /* Top Right Bottom Left */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            box-sizing: border-box;
+            line-height: 1.5;
+            font-size: 11pt;
+            margin-bottom: 2rem;
+        }
+
+        .document-page h1,
+        .document-page h2,
+        .document-page h3 {
+            font-family: var(--font-heading);
+            color: #0A0A0C;
+            /* Solid Black */
+        }
+
+        .document-page h1 {
+            font-size: 24pt;
+            margin-bottom: 1rem;
+        }
+
+        .document-page h2 {
+            font-size: 16pt;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .document-page p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Header */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 5mm;
+            margin-bottom: 15mm;
+        }
+
+        .doc-header .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 14pt;
+            color: #E11D48;
+            /* Crimson Accent on White */
+            letter-spacing: 0.05em;
+        }
+
+        .doc-header .meta {
+            font-size: 9pt;
+            color: #6B7280;
+            text-align: right;
+        }
+
+        /* Footer - Legal Requirements (Deutschland) */
+        .doc-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 5mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8pt;
+            color: #6B7280;
+            line-height: 1.3;
+        }
+
+        .footer-legal strong {
+            color: #374151;
+            font-weight: 600;
+        }
+
+        /* Signatures */
+        .signature-block {
+            margin-top: 30mm;
+            display: flex;
+            justify-content: space-between;
+            gap: 20mm;
+        }
+
+        .sig-line {
+            flex: 1;
+            border-top: 1px solid #1A1A1A;
+            padding-top: 2mm;
+            font-size: 10pt;
+        }
+
+        /* Strict Print Media Query for A4 */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+
+            body {
+                background: none !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .aurora-bg,
+            #neural-canvas {
+                display: none !important;
+            }
+
+            .document-page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                page-break-after: always;
+            }
+
+            /* Ensure background graphics in headers print correctly if needed */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Decorative Background only visible on Screen -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Page 1 -->
+    <div class="document-page">
+        <!-- Header -->
+        <header class="doc-header">
+            <div class="logo">STEINMETZ AI</div>
+            <div class="meta">
+                Ref: NDA-2026-0042<br>
+                Date: 02.03.2026
+            </div>
+        </header>
+
+        <!-- Document Content -->
+        <!-- Title area -->
+        <div style="text-align: center; margin: 20mm 0 30mm 0;">
+            <h1 style="font-size: 28pt; margin-bottom: 5mm;">Non-Disclosure Agreement</h1>
+            <p style="text-align: center; color: #6B7280;">Strictly Confidential</p>
+        </div>
+
+        <h2>1. Gegenstand der Vereinbarung</h2>
+        <p>Die Parteien beabsichtigen, Gespräche über eine mögliche geschäftliche Zusammenarbeit im Bereich der
+            Entwicklung von KI-Lösungen und Systemarchitekturen zu führen ("Zweck"). Im Rahmen dieser Gespräche werden
+            vertrauliche Informationen ausgetauscht.</p>
+
+        <h2>2. Definition der vertraulichen Informationen</h2>
+        <p>Vertrauliche Informationen im Sinne dieser Vereinbarung sind alle geschäftlichen, technischen und
+            finanziellen Informationen, unabhängig von ihrer Form, die eine Partei der anderen Partei offenlegt.</p>
+
+        <!-- Extends content to force multi-page if needed -->
+        <div style="height: 100mm;"></div>
+
+        <div class="signature-block">
+            <div class="sig-line">
+                <strong>Alexander Steinmetz</strong><br>
+                IT-Beratung, Alexander Steinmetz<br>
+                Ort, Datum
+            </div>
+            <div class="sig-line">
+                <strong>[Name des Kunden]</strong><br>
+                [Kundenunternehmen]<br>
+                Ort, Datum
+            </div>
+        </div>
+
+        <!-- Footer (Legal/Pflichtangaben) -->
+        <footer class="doc-footer">
+            <div class="footer-legal">
+                <strong>Alexander Steinmetz</strong> | Chief Developer & AI Solutions Architect<br>
+                IT-Beratung, Alexander Steinmetz<br>
+                Schöllerstr. 11, 74321 Bietigheim-Bissingen, Deutschland
+            </div>
+            <div class="footer-meta" style="text-align: right;">
+                USt-IdNr.: DE319115489<br>
+                consulting@steinmetz-ai.com<br>
+                Page 1 of 1
+            </div>
+        </footer>
+    </div>
+
+    <!-- Neural Canvas Script for the screen background -->
+    <script>
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+
+        const config = {
+            particleCount: 50, // Less dense for background of a white doc
+            particleBaseRadius: 1.5,
+            particleSpeed: 0.2,
+            linkDistance: 150,
+            linkColor: '250, 235, 215',
+            particleColor1: '#FFFFFF',
+            particleColor2: '#FAEBD7'
+        };
+
+        let particles = [];
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * config.particleSpeed;
+                this.vy = (Math.random() - 0.5) * config.particleSpeed;
+                this.radius = Math.random() * config.particleBaseRadius + 0.5;
+                this.color = Math.random() > 0.5 ? config.particleColor1 : config.particleColor2;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < config.particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < config.linkDistance) {
+                        let opacity = 1 - (dist / config.linkDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(${config.linkColor}, ${opacity * 0.3})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        resize();
+        animate();
+    </script>
+</body>
+
+</html>

@@ -94,7 +94,7 @@ Die Angst vor KI-Datenlecks beim Lesen aus CRM- oder ERP-Systemen (via Composio)
 
 ### 5.3 State Management & Langzeitgedächtnis via GCC (Git Context Controller)
 Remote Discovery Sessions erstrecken sich oft über Wochen mit verschiedenen asynchronen Tasks (Interviews, ERP-Analysen). Claude Code und Agenten-Sitzungen verlieren in der Regel ihren Kontext bei einem Neustart.
-* **Architektur-Implikation:** Integration des **GCC (Git Context Controller)**. Dieses System persistiert die Fortschritte und Gedanken der Agenten in einem durch Git versionierten `.GCC/` Verzeichnis. Zu Beginn jeder neuen Session (oder Agenten-Schritts) liest das System z.B. mittels `gcc-context.sh` den bisherigen Projekt-Zustand, den aktiven Branch und Milestones wieder ein, sodass Agenten kontextuell nahtlos dort weiterarbeiten können, wo sie Tage zuvor aufgehört haben.
+* **Architektur-Implikation:** Integration des **GCC (Git Context Controller)**. Dieses System persistiert die Fortschritte und Gedanken der Agenten in einem durch Git versionierten `.GCC/` Verzeichnis. Zu Beginn jeder neuen Session (oder Agenten-Schritts) liest das System z.B. mittels `gcc-context.sh` den bisherigen Projekt-Zustand, den aktiven Branch und Milestones wieder ein, sodass Agenten kontextuell nahtlos dort weiterarbeiten können, wo sie Tage zuvor aufgehört haben. Quelle: https://github.com/alstit01/GCC.git
 
 ### 5.4 Deterministische Ausgabe-Formate (Standardized Deliverables)
 LLMs neigen prinzipbedingt zur Varianz. Consulting-Dokumente müssen aber einheitlich aufgebaut sein.
