@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Template - Steinmetz AI</title>
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- V3 Dynamic Backgrounds -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Presentation Container -->
+    <div class="presentation-wrapper">
+
+        <!-- ==============================================
+             SLIDE 1: TITLE SLIDE
+        ==================================================== -->
+        <section class="slide title-slide">
+            <div class="glass slide-content">
+                <div class="brand-badge text-gradient-antique">STEINMETZ AI</div>
+                <h1>Strategic Discovery Session</h1>
+                <h2>Architecting the Future of Engineering</h2>
+
+                <div class="speaker-info">
+                    <p class="name">Alexander Steinmetz</p>
+                    <p class="role text-gradient">AI Solutions Architect & Chief Developer</p>
+                </div>
+            </div>
+            <!-- Footer omitted on title slide via CSS -->
+        </section>
+
+        <!-- ==============================================
+             SLIDE 2: AGENDA SLIDE
+        ==================================================== -->
+        <section class="slide agenda-slide">
+            <!-- Header -->
+            <header class="slide-header">
+                <div class="logo">STEINMETZ AI</div>
+                <div class="topic">Agenda</div>
+            </header>
+
+            <div class="content-area glass">
+                <ol class="agenda-list">
+                    <li>
+                        <span class="step-num text-gradient-accent">01</span>
+                        <div class="step-desc">
+                            <h3>Current State Analysis</h3>
+                            <p>Deep dive into bottlenecks and data silos.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num text-gradient-accent">02</span>
+                        <div class="step-desc">
+                            <h3>Architecture Assessment</h3>
+                            <p>Evaluating existing IT landscapes for AI readiness.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num text-gradient-accent">03</span>
+                        <div class="step-desc">
+                            <h3>Solution Design</h3>
+                            <p>Drafting the future-ready AI-first architecture.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-num text-gradient-accent">04</span>
+                        <div class="step-desc">
+                            <h3>Roadmap & MVP</h3>
+                            <p>Defining the path to ROI and implementation.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Footer -->
+            <footer class="slide-footer">
+                <div class="footer-left">2026-03-02 | Alexander Steinmetz</div>
+                <div class="footer-right">02 / 10</div>
+            </footer>
+        </section>
+
+        <!-- ==============================================
+             SLIDE 3: CONTENT (50/50 SPLIT)
+        ==================================================== -->
+        <section class="slide content-slide split-layout">
+            <header class="slide-header">
+                <div class="logo">STEINMETZ AI</div>
+                <div class="topic">Phase 1: Discovery</div>
+            </header>
+
+            <div class="content-area">
+                <div class="text-col glass">
+                    <h3>The Hidden Cost of Inefficiency</h3>
+                    <p>In modern engineering, up to <strong>40% of time</strong> is lost to non-value-adding
+                        administrative tasks and data retrieval across fragmented systems.</p>
+                    <ul>
+                        <li>Manual data alignment between tools</li>
+                        <li>Redundant documentation updates</li>
+                        <li>Delayed decision making due to opaque data</li>
+                    </ul>
+                </div>
+
+                <div class="visual-col glass">
+                    <!-- Placeholder for Metric/Visual -->
+                    <div class="metric-display">
+                        <span class="badge badge-red">Critical</span>
+                        <div class="metric-value text-gradient-accent">40%</div>
+                        <p>Time wasted on administrative overhead per engineer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="slide-footer">
+                <div class="footer-left">2026-03-02 | Alexander Steinmetz</div>
+                <div class="footer-right">03 / 10</div>
+            </footer>
+        </section>
+
+    </div> <!-- /presentation-wrapper -->
+
+    <!-- Neural Network Script (Copied/Adapted from brand showcase) -->
+    <script>
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Configuration
+        const config = {
+            particleCount: 120, // Adjust for performance vs density
+            particleBaseRadius: 1.5,
+            particleSpeed: 0.4,
+            linkDistance: 150,
+            linkColor: '250, 235, 215', // Antique White (rgb)
+            particleColor1: '#FFFFFF',    // Bright White
+            particleColor2: '#FAEBD7',    // Antique White
+            mouseInteractiveDistance: 200,
+            mouseRepelStrength: 0.05
+        };
+
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        // Handle Resize
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+        window.addEventListener('resize', resize);
+
+        // Track Mouse
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        // Particle Class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * config.particleSpeed;
+                this.vy = (Math.random() - 0.5) * config.particleSpeed;
+                this.radius = Math.random() * config.particleBaseRadius + 0.5;
+                // Randomly assign pure white or antique white
+                this.color = Math.random() > 0.5 ? config.particleColor1 : config.particleColor2;
+            }
+
+            update() {
+                // Move
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Mouse Interaction (Push away)
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < config.mouseInteractiveDistance) {
+                        let force = (config.mouseInteractiveDistance - dist) / config.mouseInteractiveDistance;
+                        this.vx -= (dx / dist) * force * config.mouseRepelStrength;
+                        this.vy -= (dy / dist) * force * config.mouseRepelStrength;
+                        // Max Speed Limit
+                        let speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                        if (speed > config.particleSpeed * 2) {
+                            this.vx = (this.vx / speed) * config.particleSpeed * 2;
+                            this.vy = (this.vy / speed) * config.particleSpeed * 2;
+                        }
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                // Add subtle glow
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0; // Reset for lines
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < config.particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw nodes
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw Connections
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < config.linkDistance) {
+                        let opacity = 1 - (dist / config.linkDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(${config.linkColor}, ${opacity * 0.4})`; // Subtle lines
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Start
+        resize();
+        animate();
+    </script>
+</body>
+
+</html>

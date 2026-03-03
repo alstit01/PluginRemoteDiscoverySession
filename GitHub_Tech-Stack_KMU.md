@@ -63,6 +63,7 @@ flowchart LR
 
   subgraph TOOLS["Tool-Layer (MCP)"]
     MCP["MCP Client"]
+    GOVSEC["Security & Governance (Cerbos / Presidio)"]
     GH["MCP: GitHub / SCM"]
     FS["MCP: Filesystem / DMS"]
     SAAS["MCP: SaaS/ERP/CRM (z.B. AWS/M365/...)"]
@@ -86,9 +87,10 @@ flowchart LR
   CC --> ETL
 
   CC <--> MCP
-  MCP --> GH
-  MCP --> FS
-  MCP --> SAAS
+  MCP --> GOVSEC
+  GOVSEC --> GH
+  GOVSEC --> FS
+  GOVSEC --> SAAS
 
   CC --> POLICY
   POLICY --> MCP
@@ -209,6 +211,35 @@ Repo-/Lizenzbasis: GitHub MCP Server ist als offizieller MCP Server dokumentiert
   Vorteile: Viele Beispiele, schnelles Prototyping, gutes Lernmaterial.   
   Nachteile: Doku warnt explizit: **nicht production‑ready**, Security‑Safeguards müssen selbst gebaut werden.   
   Integration: Nur als Ausgangsbasis; produktive KMU‑Stacks sollten daraus „gehärtete“ interne MCP‑Server ableiten (Allowlists, Path‑Guards, Output‑Sanitization).
+
+### Data Governance & Zero-Trust Security (Data-Centric Core)
+
+Kurzbeschreibung: Gemäß der neuesten Forschungs-Erkenntnisse zu Data-Centric Architectures ist der Schutz der Daten selbst (Zero Trust) und deren strukturierte Überwachung (Governance) für KMUs unerlässlich, bevor autonome KI-Agenten und MCP-Server systemischen Lese- oder gar Schreibzugriff erhalten. Dieser Layer stellt sicher, dass strukturelle Daten katalogisiert, Zugriffe restriktiv gemanagt und PII-Daten (personally identifiable information) erkannt werden.
+
+| Option | GitHub | Stability | Wartbarkeit | KMU‑Eignung | Lizenz |
+|---|---:|---:|---:|---:|---:|
+| OpenMetadata (Data Catalog/Governance) | `https://github.com/open-metadata/OpenMetadata` | 4 | 4 | 3 | 5 |
+| Cerbos (Zero-Trust Authorization/IAM) | `https://github.com/cerbos/cerbos` | 5 | 4 | 4 | 5 |
+| Microsoft Presidio (Data Masking/PII Redact) | `https://github.com/microsoft/presidio` | 5 | 4 | 5 | 5 |
+
+Repo-/Lizenzbasis: OpenMetadata (Apache-2.0) ist die führende OSS-Metadaten Plattform. Cerbos (Apache-2.0) ist eine stark etablierte "Authorization as a Service" Lösung. Presidio (MIT) von Microsoft ist der Goldstandard für das Identifizieren und Anonymisieren von sensiblen Daten.
+
+**Hauptvorteile/Nachteile & Integrationshinweise**
+
+- **OpenMetadata**  
+  Vorteile: Absoluter Standard für Data Lineage, Profiling und Governance. Sehr breite Konnektoren-Landschaft.   
+  Nachteile: Setup (Microservices, DB-Dependencies) ist nicht trivial; für sehr kleine KMUs (unter 10 MA) eventuell oversized.   
+  Integration: Agiert als "Landkarte" für das KMU. Bevor ein LLM-Agent via MCP auf eine Datenbank losgelassen wird, iteriert er über den Catalog, um zu verstehen, wo die Datenstrukturen liegen und welche Data Owners existieren.
+
+- **Cerbos (Zero-Trust Auth)**  
+  Vorteile: Stateless, sehr schnelles Policy-Enforcement. Zentralisiert die Zugriffslogik, die komplett von der Applikation entkoppelt ist ("Policy as Code").   
+  Nachteile: Erfordert ein kurzes Umdenken in der Architektur für KMU-Devs.   
+  Integration: Sitzt programmatisch zwischen dem MCP-Server und der Backend-Datenbank. Wenn ein Agent eine Query sendet, prüft Cerbos in Nanosekunden: "Darf dieser AI-Client im Kontext X die Ressource Y lesen?".
+
+- **Microsoft Presidio**  
+  Vorteile: Erkennt und anonymisiert/maskiert PII dynamisch, unterstützt viele Sprachen und ist hochgradig anpassbar. Ein absolutes Muss für GDPR/DSGVO oder 152-ФЗ Compliance.   
+  Nachteile: Benötigt lokales NLP (z.B. SpaCy) was CPU Cycles/RAM kostet.   
+  Integration: Als vorgeschaltete Pipeline-Stage in Lese-Anfragen: Wenn ein CRM-Export vom MCP-Server zum Agent/LLM fließen soll, läuft der Text durch Presidio. Exakte Klarnamen oder IBANs werden durch Tokens/Hashes (wie `<PERSON>`) ersetzt, das LLM sieht nie die Originaldaten.
 
 ### Vector RAG für Wissensmanagement
 
@@ -449,8 +480,20 @@ Dieser Tech-Stack ist universell als Basis konzipiert, jedoch **nicht in Stein g
 
 Folgende Aspekte bedürfen weiterer Klärung:
 
-1. **Claude Plugins & Claude Skill-Sets (GitHub):**  
-   Dem aktuellen Tech-Stack fehlen noch tiefergehende Recherchen und Bewertungen zu bereits auf GitHub frei verfügbaren *Claude Plugins* und fertigen *Claude Skill-Sets*. Diese müssen katalogisiert und als priorisierte „Bausteine“ in den Stack aufgenommen werden, um bei Kunden-Use-Cases sofort darauf zurückgreifen zu können.
+1. **Claude Plugins & KI-Datenaufbereitung (GitHub):**  
+   Dem aktuellen Tech-Stack fehlten noch tiefergehende Recherchen zu frei verfügbaren *Claude Plugins*, fertigen *Skill-Sets* und Tools für die Datenaufbereitung. Zwei herausragende und essenzielle OSS-Ressourcen (beide unter MIT-Lizenz) wurden identifiziert:
+   
+   **A) Performance Optimization System:** Das Repository [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) liefert eine produktionsbereite Architektur für KI-Agenten:
+   - **Cross-Platform:** Nativ nutzbar mit Claude Code, Codex, Cursor und OpenCode.
+   - **Agenten & Skills:** Bietet 13 vorkonfigurierte Experten-Agenten und 50+ wiederverwendbare Workflows (Skills).
+   - **Sicherheitsfokus:** Beinhaltet "AgentShield", einen dedizierten Security Auditor mit strengen Hook-Scanning-Regeln zur Verhinderung von Prompt-Injections (hochrelevant für Governance & Zero-Trust).
+   - *Fazit:* Dient als Blueprint und Beschleuniger für Use-Cases, der den Aufwand für Prompt-Engineering und Tool-Orchestrierung extrem reduziert.
+
+   **B) Data Layer für AI Systems:** Das Repository [yusufkaraaslan/Skill_Seekers](https://github.com/yusufkaraaslan/Skill_Seekers) fungiert als universelle Preprocessing-Schicht für RAG und Coding-Agenten (bietet sogar eigenen MCP-Server Support):
+   - **Universal-Scraping & Synthese:** Wandelt Docs, GitHub-Repos (inklusive tiefgehender AST-Code-Analyse), PDFs und strukturierte Videos (YouTube) in hochwertiges "Knowledge-Asset" (SKILL.md) um.
+   - **Multi-Export:** Verpackt die Daten sofort u.a. als Claude/Gemini-Skill-Archive (ZIP), IDE-Rules (`.cursorrules`, `.clinerules`) oder gar vorchunked für Vector-Datenbanken (via LangChain-Documents/LlamaIndex-TextNodes).
+   - **Intelligente Aufbereitung:** Erkennt Architekturpatterns, liest automatisch C3.x Strukturen und deckt Konflikte zwischen geschriebener Doku und tatsächlichem Code auf.
+   - *Fazit:* Das entscheidende Bindeglied für den KMU-Rollout. Wir sparen Tage bei der Datenaufbereitung und können Unternehmens-Dokus/APIs quasi instant in die Vektor-/Graph-RAG Pipelines einspeisen.
 
 2. **Endgültige Klärung der Lizensierung:**  
    Das Thema Lizensierung (z.B. OSS-Einschränkungen bei kommerzieller Distribution vs. interner Nutzung, Anthropic Commercial Terms bei Claude Code) ist für den operativen Rollout noch **nicht final und rechtssicher geklärt**. Es bedarf eines klaren Entscheidungs- und Freigabeverfahrens für KMUs.
